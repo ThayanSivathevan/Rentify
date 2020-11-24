@@ -1,0 +1,264 @@
+li a:active {
+	background-color: grey !important;
+}
+
+
+#form-inline {
+	display: inline-flex;
+	align-items: center;
+	text-align: center;
+}
+
+#dateSelect {
+	width: 20%;
+    margin-top: 1%;
+    padding-left: 10px;
+    border-radius: 2px;
+	background-color: rgba(255, 255, 255, 0.9);
+}
+
+.submitBox {
+	margin: auto;
+  	width: 100%;
+  	padding: 30px;
+  	text-align: center;
+  	border-radius: 10px;
+  	box-sizing: border-box;
+  	font-family: 'Fira Sans Condensed', sans-serif;
+}
+
+nav {
+	top: -5px !important;
+	overflow: visible;
+	z-index: 2;
+}
+
+nav .nav-wrapper { 
+	background-color: grey;
+	border-bottom-style: solid;
+	border-bottom-color: #26a69a;
+	z-index: 2;
+	font-family: 'Fira Sans Condensed', sans-serif;
+}
+
+#title {
+	font-family: 'Fira Sans Condensed', sans-serif;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+
+#image {
+	background-image: url('./mainBackground.jpg');
+	display: block;
+  	position: fixed;
+  	min-height: 100%;
+  	width: 100%;
+	height: 0;
+	padding-bottom: 50%;
+ 	background-size: cover;
+ 	overflow: auto;
+	z-index: 1;
+}
+
+#submit {
+	position: static;
+  	background-color: rgb(0,0,0); 
+	background-color: rgba(0,0,0, 0.9);
+	color: white;
+	font-weight: bold;
+	border: 3px solid #f1f1f1;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
+	width: 60%;
+	padding: 20px;
+	text-align: center
+}
+
+.signup #submit {
+	background-color: rgba(255,255,255, 0.9);
+	border: 3px solid black;
+}
+
+.signup .submitBox {
+	width: 50%;
+}
+
+::placeholder {
+	color: black;
+}
+
+#email, #password, #firstName, #lastName {
+	border: 0;
+  	outline: 0;
+  	background: transparent;
+  	border-bottom: 1px solid black;
+}
+
+#rentifySignup {
+	font-size: 45px;
+	color: black;
+}
+
+.btn {
+	margin-left: 20px;
+	font-family: 'Fira Sans Condensed', sans-serif;
+}
+
+label {
+	margin-right: 20px;
+	color: white;
+}
+
+select {
+	margin-right: 15px;
+	width: 15%;
+	font-family: 'Fira Sans Condensed', sans-serif;
+	border: 1px solid #f2f2f2;
+	display: inline;
+}
+
+input {
+	font-family: 'Fira Sans Condensed', sans-serif;
+}
+
+nav ul a:hover {
+	background-color: #26a69a;
+}
+
+.card {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.row {
+    margin-top: 5%;
+    margin-bottom: 0px;
+}
+
+.row .col.m6 {
+    width: 20%;
+}
+
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+}
+
+.item{
+    width:30%
+}
+
+.modal label {
+	color: black;
+	text-align: center;
+}
+
+.modal {
+	display : block;
+    position: fixed;
+    z-index: 1;
+	padding-top: 100px; 
+	max-height:100%;
+	min-height:0%;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+}
+
+
+.modal-content {
+    text-align: center;
+	background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+}
+
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.orders #dateSelect {
+    margin-top: 5%;
+    width: 20%;
+}
+
+.orders .btn {
+    margin-top: 5%;
+    margin-left: 0;
+}
+
+#datepicker{
+
+  width: 50%;
+	text-align: center;
+}
+
+
+
+
+.welcome {
+    margin: 5rem 0 0 1rem;
+    font-size: 45px;
+    font-family: 'Fira Sans Condensed', sans-serif;
+}
+
+.prevLabel {
+    margin: 3rem 0 1rem 8rem;
+    font-size: 45px;
+    font-family: 'Fira Sans Condensed', sans-serif;
+}
+
+.collection {
+    margin: 0rem 8rem 2rem 8rem;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-size: 20px;
+}
+
+.collection-header {
+    width: 100%;
+    height: auto;
+    word-wrap: break-word;
+}
+
+#myCar {
+    text-align: center;
+	display:block;
+}
+
+#img01 {
+    text-align: center;
+
+    padding: 0px;
+    border-radius: 4px;
+}
+
+#closeImg {
+    margin-right: 50;
+}
+
+.ord .btn {
+    position: all;
+    margin: -4rem 3rem 0 0;
+}
