@@ -49,7 +49,7 @@ nav .nav-wrapper {
 
 
 #image {
-	background-image: url('./mainBackground.jpg');
+	background-image: url('https://img5.goodfon.com/wallpaper/nbig/a/87/car-logos-texture-background.jpg');
 	display: block;
   	position: fixed;
   	min-height: 100%;
@@ -151,6 +151,16 @@ nav ul a:hover {
 
 .item{
     width:30%
+}
+
+.orderCar {
+	font-size: 15px;
+}
+
+.orderLabel {
+	font-weight: bold;
+	font-size: 20px;
+	text-align: left;
 }
 
 .modal label {
