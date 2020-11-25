@@ -220,7 +220,7 @@ const Search = () => {
                     </div>
                 </div>)
         }
-        //second page to get end date
+        //second page to get end date and submits to user
         else if (page === 2) {
             return (
                 <div id="order1" className="modal">
