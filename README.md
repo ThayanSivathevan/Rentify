@@ -2,7 +2,7 @@ Install node js https://nodejs.org/en/download/
 Install wamp server
 Install mysql workbench
 
-git clone https://github.com/ThayanSivathevan/Rentify.git in folder
+git clone https://github.com/ThayanSivathevan/Rentify.git or download zip in folder
 
 
 open up mysql workbench and turn on wamp server , connect to localhost 3306, and 
