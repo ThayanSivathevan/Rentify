@@ -21,15 +21,12 @@ const Orders = () => {
     }, [])
 
     const getOrders = () => {
-        fetch('/getOrders', {
-            method: "post",
+        fetch('/orders', {
+            method: "get",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + localStorage.getItem("jwt")
-            },
-            body: JSON.stringify({
-
-            })
+            }
 
         }).then(res => res.json()).then(res => {
             if (res.error) {
@@ -57,7 +54,7 @@ const Orders = () => {
     }
 
     const cancelOrder=(id)=>{
-        fetch('/deleteOrder/'+id.toString(), {
+        fetch('/order/'+id.toString(), {
             method: "delete",
             headers: {
                 "Content-Type": "application/json",

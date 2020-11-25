@@ -30,7 +30,7 @@ router.post('/signup',(req,res)=>{
         if (err){
              return res.status(422).json({error:"Email Already Used"})
         }
-        return res.json({result:"signup sucessful"})
+        return res.json({result:"Signed up sucessfully"})
      });
     
 })

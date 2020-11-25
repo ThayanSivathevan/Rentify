@@ -19,8 +19,8 @@ con.connect(function (err) {
     console.log("Connected!");
 });
 
-router.post("/findDates", requireLogin, (req, res) => {
-    let sql = `SELECT startDate,endDate FROM orders WHERE carID="${req.body.car}" AND endDate>=CURDATE() order by startDate;`
+router.get("/dates/:car", requireLogin, (req, res) => {
+    let sql = `SELECT startDate,endDate FROM orders WHERE carID="${req.params.car}" AND endDate>=CURDATE() order by startDate;`
     console.log(sql, req.body.car, req.user)
     con.query(sql, (err, rows) => {
         if (err) {
@@ -33,7 +33,7 @@ router.post("/findDates", requireLogin, (req, res) => {
 })
 
 
-router.post("/createOrder", requireLogin, (req, res) => {
+router.post("/order", requireLogin, (req, res) => {
     console.log(req.body.startDate)
     con.query(`SELECT dailyPrice,branchID FROM car WHERE carsID=${req.body.car}`, (err, rows) => {
         if (err) {
@@ -59,7 +59,7 @@ router.post("/createOrder", requireLogin, (req, res) => {
 
 })
 
-router.post("/getOrders", requireLogin, (req, res) => {
+router.get("/orders", requireLogin, (req, res) => {
     let sql = `SELECT o.orderID,o.startDate,o.endDate,o.totalPrice,b.BranchName,b.city,b.location,c.carModel,c.carMake,c.carType,c.carUrl FROM orders o LEFT JOIN (branch b) ON (o.branchID=b.BranchID) LEFT JOIN (car c) ON (o.carID=c.carsID) WHERE userID=${req.user.UsersID} order by startDate desc;`
     con.query(sql, (err, rows) => {
         if (err) {
@@ -73,7 +73,7 @@ router.post("/getOrders", requireLogin, (req, res) => {
 })
 
 
-router.delete("/deleteOrder/:id",requireLogin,(req,res)=>{
+router.delete("/order/:id",requireLogin,(req,res)=>{
     let sql=`DELETE FROM orders WHERE ${req.params.id}=orderID;`
     console.log(sql)
     con.query(sql, (err, rows) => {
