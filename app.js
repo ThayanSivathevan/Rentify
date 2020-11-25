@@ -8,7 +8,7 @@ app.use(express.json());
 
 
 app.use(require('./routes/auth'))
-app.use(require('./routes/requests'))
+app.use(require('./routes/common'))
 app.use(require('./routes/user'))
 
 app.listen(PORT,()=>{
