@@ -1,16 +1,22 @@
+//creates imports
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import M from 'materialize-css'
+//creates a custom home component
 const Home = () => {
-    const history = useHistory();
+	//creates history object
+	const history = useHistory();
+	//creates variables to store states of values in car table 
     const [make, setMake] = useState("any")
     const [price, setPrice] = useState("any")
     const [date, setDate] = useState("any")
-    const [city, setCity] = useState("any")
+	const [city, setCity] = useState("any")
+	//changes the site to the custom search component based on values
     const postData=()=>{
         history.push('/search/'+make+'/'+price+'/'+city+'/'+date)
     }
 
+	//converts date object to be in yyyy/mm/dd format
     const today=()=>{
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
@@ -21,15 +27,16 @@ const Home = () => {
         return today;
     }
 
-
+	//returns components
     return (
         <div className="main">
-            
+        
             <div id="image"></div>
             <div id="submit">
 			<div className="submitBox">
 				<div className="input-field col s12">
                 <div id="form-inline">
+						{/* {input for all the components} gets values for query*/}
 						<label>MAKE:</label>
 		    			<select className="select" onChange={(e)=>setMake(e.target.value)}>
 		    				<option default value="any">Any MAKE</option>
@@ -84,6 +91,7 @@ const Home = () => {
                         </select>
 		    			<label>DATE:</label><br />
 		    			<input type="date" id="dateSelect" name="date" min={today()} onChange={(e)=>setDate(e.target.value)} />
+						{/* {changes the site to the search page} */}
 		    			<Link to={'/search/'+make+'/'+price+'/'+city+'/'+date}><button type="submit" className="btn"  onChange={(e)=>postData(e.target.value)} value="Submit">Submit</button>
                         </Link>
                    </div>

@@ -22,7 +22,7 @@ router.post('/signup',(req,res)=>{
     const {email,fName,lName,password}=req.body
     var pass
     if(!email || !fName ||!lName || !password){
-        return res.status(422).json({error:"please fill all fields"})
+        return res.status(422).json({error:"Please fill all fields"})
     }
     sql=`INSERT INTO rentify.users (Email, firstName, lastName, password) 
     VALUES ('${email}','${fName}','${lName}','${password}');`
@@ -39,7 +39,7 @@ router.post('/signup',(req,res)=>{
 router.post('/signin',(req,res)=>{
   const {email,password}=req.body
   if(!email || !password){
-    return res.status(422).json({error:"please fill all fields"})
+    return res.status(422).json({error:"Please fill all fields"})
   }
   sql=`SELECT * FROM rentify.users WHERE '${password}'=password AND '${email}'=Email`
   con.query(sql, function (err, rows) {

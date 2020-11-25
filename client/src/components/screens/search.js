@@ -38,7 +38,7 @@ const Search = () => {
     const getDates = (id, name1, name2) => {
         setCar(id);
         setName(name1 + " " + name2)
-        fetch(`/dates/${car}`, {
+        fetch(`/dates/${id}`, {
             method: "get",
             headers: {
                 "Content-Type": "application/json",
