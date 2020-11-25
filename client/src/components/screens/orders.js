@@ -94,7 +94,7 @@ const Orders = () => {
     }
     //returns html components
     return (
-        <div id="ord">
+        <div className="main" id="ord">
             <h1 className="welcome">Welcome, {name} </h1>
             <h2 className="prevLabel">Ongoing Orders</h2>
             {/* maps user's current orders if there are present orders else says fetching */}
