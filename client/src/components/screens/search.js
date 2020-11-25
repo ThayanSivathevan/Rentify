@@ -18,14 +18,11 @@ const Search = () => {
     const [name, setName] = useState();
     const [page, setPage] = useState(0);
     useEffect(() => {
-        fetch('/findcars', {
-            method: "post",
+        fetch(`/cars/${p.make}/${p.price}/${p.city}/${p.date}`, {
+
             headers: {
                 "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                p
-            })
+            }
 
         }).then(res => res.json()).then(res => {
             if (res.error) {
@@ -41,15 +38,12 @@ const Search = () => {
     const getDates = (id, name1, name2) => {
         setCar(id);
         setName(name1 + " " + name2)
-        fetch('/findDates', {
-            method: "post",
+        fetch(`/dates/${car}`, {
+            method: "get",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + localStorage.getItem("jwt")
             },
-            body: JSON.stringify({
-                car: id
-            })
 
         }).then(res => res.json()).then(res => {
             if (res.error) {
@@ -115,7 +109,7 @@ const Search = () => {
     const getLastDate = () => {
         console.log(endDate)
         if (endDate) {
-            fetch('/createOrder', {
+            fetch('/order', {
                 method: "post",
                 headers: {
                     "Content-Type": "application/json",
@@ -183,8 +177,10 @@ const Search = () => {
                             <div className="form-container">
                                 <h1>Order Information</h1>
                                 <label id="make">
+
                                     <label className="orderLabel">Car:</label>
                                     <label className="orderCar" id="car">{name}</label>
+
                                 </label>
                                 <br />
                                 <label className="orderLabel">Start Date:</label>
