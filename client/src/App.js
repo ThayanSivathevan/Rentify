@@ -1,3 +1,4 @@
+//imports components and libraries 
 import React, { useEffect, createContext, useReducer,useContext } from 'react'
 import './App.css';
 import Signin from './components/screens/signin'
@@ -9,9 +10,11 @@ import Search from './components/screens/search'
 import { BrowserRouter, Route, Switch, useHistory } from 'react-router-dom';
 import { reducer, initialState } from './reducers/UserReducer'
 export const UserContext = createContext()
+//creates a routing component to route between links
 const Routing=()=>{
   const history = useHistory()
   const{state,dispatch}=useContext(UserContext)
+  //onload checks if the user is logged in or not and pushes the user based on that
   useEffect(()=>{
     const user= JSON.parse(localStorage.getItem("user"))
     
@@ -22,6 +25,7 @@ const Routing=()=>{
         history.push('/signin')
     }
   },[])
+  //return the components routed 
   return (
     <Switch>
       <Route exact path="/signin">
@@ -44,6 +48,7 @@ const Routing=()=>{
 
 
 }
+//creates the final app for the frontend using all the components 
 function App() {
   const [state,dispatch] = useReducer(reducer, initialState)
   return (

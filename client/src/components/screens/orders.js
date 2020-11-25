@@ -1,48 +1,54 @@
 //creates imports
 
-import React, { useEffect, useState, useRef,useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
 import M from 'materialize-css'
 import Popup from 'reactjs-popup';
-import { UserContext } from '../../App'
+
 //creates orders component
 const Orders = () => {
     //creates useHistory object
     const history = useHistory();
-    const { state, dispatch } = useContext(UserContext)
+    //creates state variables
     const [pastOrders, setPastOrders] = useState()
     const [presentOrders, setPresentOrders] = useState()
     const [image,setImage]=useState(null)
+    //get name from localstorage
     const [name,setName]=useState(()=>{
         const {firstName,lastName}=JSON.parse(localStorage.getItem("user"))
         return firstName+" "+lastName
 
     })
-    console.log(name)
+    //on load gets the user's orders
     useEffect(() => {
         getOrders()
     }, [])
-
+    //get fetch request to retrieve orders
     const getOrders = () => {
         fetch('/orders', {
             method: "get",
             headers: {
                 "Content-Type": "application/json",
+                //authorization token
                 "Authorization": "Bearer " + localStorage.getItem("jwt")
             }
 
         }).then(res => res.json()).then(res => {
+            //checks if logged in or error
             if (res.error) {
                 M.toast({ html: res.error, classes: "#26a69a teal lighten-1" })
-                return history.push('/')
+                return history.push('/login')
             }
+            //parses through dates to find  if order is old or current
             let present = [];
             let old = [];
             let day = new Date(createDate(new Date()))
+            //maps the data
             res.map(item => {
                 let temp = item.endDate
                 item.endDate = createDate(new Date(item.endDate))
                 item.startDate = createDate(new Date(item.startDate))
+                //checks if date is present or old
                 if (day > new Date(temp)) {
                     old.push(item)
                 }
@@ -50,13 +56,14 @@ const Orders = () => {
                     present.push(item)
                 }
             })
-            console.log(old)
+            //sets the orders to variables
             setPastOrders(old)
             setPresentOrders(present)
         })
     }
 
     const cancelOrder=(id)=>{
+        //cancels order based on id by sending a delete request to the backend 
         fetch('/order/'+id.toString(), {
             method: "delete",
             headers: {
@@ -64,21 +71,19 @@ const Orders = () => {
                 "Authorization": "Bearer " + localStorage.getItem("jwt")
             }
         }).then(res => res.json()).then(res => {
+            //tells the user if there is an error
             if (res.error) {
                 M.toast({ html: res.error, classes: "#26a69a teal lighten-1" })
             }
+            //lets the user know the order was deleted and re checks the database for the orders
             else{
                 M.toast({html:"Order sucessfully deleted", classes: "#26a69a teal lighten-1" })
-                const data=presentOrders.map(item=>{
-                    if(!res.id==item.orderID){
-                        return item
-                    }
-                })
                 getOrders()
             }
            
         })
     }
+    //creates database in yyyy/mm/dd format
     const createDate = (today) => {
         let dd = String(today.getDate()).padStart(2, '0');
         let mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -87,11 +92,12 @@ const Orders = () => {
         today = yyyy + '-' + mm + '-' + dd;
         return today;
     }
-
+    //returns html components
     return (
         <div id="ord">
             <h1 className="welcome">Welcome, {name} </h1>
             <h2 className="prevLabel">Ongoing Orders</h2>
+            {/* maps user's current orders if there are present orders else says fetching */}
             {presentOrders ? presentOrders.map(item => {
                 return(
                 <div >
@@ -107,6 +113,7 @@ const Orders = () => {
                 )
             }) : <h1>Fetching results ...</h1>}
             <h2 className="prevLabel">Previous Orders</h2>
+            {/* maps user's past orders if there are past orders else says fetching */}
             {pastOrders ? pastOrders.map(item => {
                 return(
                 <div>
@@ -123,6 +130,7 @@ const Orders = () => {
                 </div>
                 )
             }) : <h1>Fetching results ...</h1>}
+            {/* shows the order's car image */}
             {image?<div id="myCar" className="modal">
                 <span className="close" id="closeImg" ><i className="material-icons" onClick={() => setImage(null)}>cancel</i></span>
                 <img className="modal-content" id="img01" src={image} width="300" height="300" />

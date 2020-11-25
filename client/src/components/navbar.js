@@ -2,11 +2,14 @@ import React,{useContext,useRef,useEffect,useState} from 'react'
 import {Link ,useHistory} from 'react-router-dom'
 import {UserContext} from '../App'
 
-
+//creates the navbar
 const NavBar = ()=>{
     const {state,dispatch} = useContext(UserContext)
+    //creates history
     const history = useHistory();
+    //creates a navbar based on if user is logged in or not
     const renderList = ()=>{
+        //if logged in return these components
         if(state){
             return [
                 <li key="2"><Link to="/orders" value="orders">ORDERS</Link></li>,
@@ -20,6 +23,7 @@ const NavBar = ()=>{
                 </li>
             ]
         }
+        //if not logged in return these components
         else{
             return [
           
@@ -31,7 +35,7 @@ const NavBar = ()=>{
 
     }
 
-
+    //returns components 
     return (
             <nav>
                 <div className="nav-wrapper">
