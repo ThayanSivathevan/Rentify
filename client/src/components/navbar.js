@@ -11,7 +11,7 @@ const NavBar = ()=>{
             return [
                 <li key="2"><Link to="/orders" value="orders">ORDERS</Link></li>,
                 <li  key="5">
-                    <button className="btn #26a69a teal lighten-1" onClick={()=>{localStorage.clear() 
+                    <button className="btn #26a69a teal lighten-1 logout" onClick={()=>{localStorage.clear() 
                     dispatch({type:"CLEAR"})
                      history.push('/signin')
                     }}>

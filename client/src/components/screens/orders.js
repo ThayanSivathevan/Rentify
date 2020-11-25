@@ -97,7 +97,7 @@ const Orders = () => {
                 <div >
                     <ul className="collection with-header">
                         <li className="collection-header"><h4>Order #{item.orderID}</h4></li>
-                        <button className="right btn" onClick={()=>cancelOrder(item.orderID)}>CANCEL</button>
+                        <button className="right btn cancel" onClick={()=>cancelOrder(item.orderID)}>CANCEL</button>
                         <li className="collection-item" id="car"><a value={item.carUrl} onClick={()=>setImage(item.carUrl)}>{item.carMake} {item.carModel} - {item.carType}</a></li>
                         <li className="collection-item">{item.city} - {item.location}</li>
                         <li className="collection-item">{item.startDate} to {item.endDate}</li>
@@ -105,7 +105,7 @@ const Orders = () => {
                     </ul>
                 </div>
                 )
-            }) : <h1>loading</h1>}
+            }) : <h1>Fetching results ...</h1>}
             <h2 className="prevLabel">Previous Orders</h2>
             {pastOrders ? pastOrders.map(item => {
                 return(
@@ -122,7 +122,7 @@ const Orders = () => {
 
                 </div>
                 )
-            }) : <h1>loading</h1>}
+            }) : <h1>Fetching results ...</h1>}
             {image?<div id="myCar" className="modal">
                 <span className="close" id="closeImg" ><i className="material-icons" onClick={() => setImage(null)}>cancel</i></span>
                 <img className="modal-content" id="img01" src={image} width="300" height="300" />
