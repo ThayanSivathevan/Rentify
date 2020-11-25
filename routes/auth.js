@@ -19,13 +19,13 @@ con.connect(function(err) {
 });
 
 router.post('/signup',(req,res)=>{
-    const {email,fName,lName,password}=req.body
+    const {email,fName,lName}=req.body
     var pass
-    if(!email || !fName ||!lName || !password){
+    if(!email || !fName ||!lName || !req.body.password){
         return res.status(422).json({error:"Please fill all fields"})
     }
     sql=`INSERT INTO rentify.users (Email, firstName, lastName, password) 
-    VALUES ('${email}','${fName}','${lName}','${password}');`
+    VALUES ('${email}','${fName}','${lName}','${req.body.password}');`
     con.query(sql, function (err, rows) {
         if (err){
              return res.status(422).json({error:"Email already used"})

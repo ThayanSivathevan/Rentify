@@ -51,5 +51,20 @@ router.get('/cars/:make/:price/:city/:date',(req,res)=>{
     })
 })
 
+router.get('/cars/:carID',(req,res)=>{
+  sql=`SELECT c.*,b.city,b.Location,b.BranchName FROM car c LEFT JOIN branch b ON c.branchID=b.BranchID WHERE ${req.params.carID}=c.carsID`
+  console.log(sql)
+  con.query(sql,(err,rows)=>{
+    if (err){
+        return res.status(422).json({error:err})
+        
+   }
+   if(Object.keys(rows).length==0){
+     return res.status(422).json({error:"No cars found"})
+   }
+   res.json(rows)
+})
+})
+
 
 module.exports=router
