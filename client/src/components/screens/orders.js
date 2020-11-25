@@ -1,10 +1,13 @@
+//creates imports
+
 import React, { useEffect, useState, useRef,useContext } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
 import M from 'materialize-css'
 import Popup from 'reactjs-popup';
 import { UserContext } from '../../App'
-
+//creates orders component
 const Orders = () => {
+    //creates useHistory object
     const history = useHistory();
     const { state, dispatch } = useContext(UserContext)
     const [pastOrders, setPastOrders] = useState()
