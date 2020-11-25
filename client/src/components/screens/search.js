@@ -178,7 +178,7 @@ const Search = () => {
                                 <h1>Order Information</h1>
                                 <label id="make">
                                     <b>Car:</b>
-                                    <label id="car">{name}{car}</label>
+                                    <label id="car">{name}</label>
                                 </label>
                                 <br />
                                 <label ><b>Start Date:</b></label>
@@ -208,7 +208,7 @@ const Search = () => {
                                 <h1>Order Information</h1>
                                 <label id="make">
                                     <b>Car:</b>
-                                    <label id="car">{name}{car}</label>
+                                    <label id="car">{name}</label>
                                 </label>
                                 <br />
                                 <label ><b>End Date:</b></label>
