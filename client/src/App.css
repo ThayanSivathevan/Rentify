@@ -153,6 +153,16 @@ nav ul a:hover {
     width:30%
 }
 
+.orderCar {
+	font-size: 15px;
+}
+
+.orderLabel {
+	font-weight: bold;
+	font-size: 20px;
+	text-align: left;
+}
+
 .modal label {
 	color: black;
 	text-align: center;
