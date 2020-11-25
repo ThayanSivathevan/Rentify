@@ -14,7 +14,7 @@ const About = () => {
                             <p className="grey-text text-lighten-4">We were founded from the dream of our CEO Mr. Mylo and co-founders of wanting any person drive and experience 
                             the car of their dreams at an affordable price. Mr. Mylo loved cars as a child, hid dad would take him to car shows every month and his love for cars 
                             grew after every visit. Unfortunately Mr. Mylo never had the chance to experience the car of his dream the SF90 spider. After gruaduating from Ontario 
-                            Tech University Mr. Mylo made a Startup for Rentify. He wanted to make a company that will give any person the experience of driving the car of their 
+                            Tech University, Mr. Mylo made a Startup for Rentify. He wanted to make a company that will give any person the experience of driving the car of their 
                             dreams. Rentify is different from similar competitors because our prices are unmatched, we value customer service above all, every car returned is 
                             toughly cleaned right away and cleaned once more before sending it out again. At Rentify we ensure that we have the best cars for the best price, 
                             and we value our customers more then any other company.</p>
