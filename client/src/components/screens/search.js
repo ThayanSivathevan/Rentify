@@ -175,15 +175,13 @@ const Search = () => {
                     <span className="close"><i className="material-icons" onClick={()=>cancel()}>cancel</i></span><br />
                         <div className="form-popup" id="myForm">
                             <div className="form-container">
-                                <h1>Order Information</h1>
+                                <label className="orderTitle">Order Information</label><br></br><br></br>
                                 <label id="make">
-
                                     <label className="orderLabel">Car:</label>
                                     <label className="orderCar" id="car">{name}</label>
-
                                 </label>
                                 <br />
-                                <label className="orderLabel">Start Date:</label>
+                                <label className="orderLabel startDate">Start Date:</label>
                                 <DatePicker
                                     className="datepicker"
                                   
@@ -194,7 +192,7 @@ const Search = () => {
                                 />
                                 
                             </div>
-                            <button className="btn" onClick={(e) => { getFirstDate() }}>Next</button>
+                            <button className="btn next" onClick={(e) => { getFirstDate() }}>Next</button>
                         </div>
                     </div>
                 </div>)
@@ -207,13 +205,13 @@ const Search = () => {
                     <span className="close"><i className="material-icons" onClick={()=>cancel()}>cancel</i></span><br />
                         <div className="form-popup" id="myForm">
                             <div className="form-container">
-                                <h1>Order Information</h1>
+                                <label className="orderTitle">Order Information</label><br></br><br></br>
                                 <label id="make">
-                                    <b>Car:</b>
-                                    <label id="car">{name}</label>
+                                    <label className="orderLabel">Car:</label>
+                                    <label className="orderCar" id="car">{name}</label>
                                 </label>
                                 <br />
-                                <label ><b>End Date:</b></label>
+                                <label className="orderLabel endDate">End Date:</label>
                                 <DatePicker
 
                                     className="datepicker"
@@ -224,8 +222,8 @@ const Search = () => {
                                 />
                                 
                             </div>
-                            <button className="btn" onClick={(e) => { getLastDate() }}>Submit</button>
-                            <button className="btn" onClick={(e) => { goBack() }}>Back</button>
+                            <button className="btn back" onClick={(e) => { goBack() }}>Back</button>
+                            <button className="btn submit" onClick={(e) => { getLastDate() }}>Submit</button>
                         </div>
                     </div>
                 </div>)
@@ -248,9 +246,9 @@ const Search = () => {
                                     </a>
                                 </div>
                                 <div className="card-content">
-                                    <p>{item.carType + " " + item.carBuild}</p>
-                                    <p>Daily price is ${item.dailyPrice} </p>
-                                    <p>Located at {item.BranchName} at {item.Location} in {item.city}</p>
+                                    <p className="carDescription"><b>{item.carType}</b>  - <b>{item.carBuild}</b> </p>
+                                    <p className="carDescription"><b><u>${item.dailyPrice}/day</u></b></p>
+                                    <p className="carDescription">Located at <b>{item.BranchName}</b> at <b>{item.Location}</b> in <b>{item.city}</b></p>
 
                                 </div>
                             </div>
@@ -258,7 +256,7 @@ const Search = () => {
                     )
                 })
                     :
-                    <h6>loading</h6>
+                    <h6>Fetching results...</h6>
                 }
             </div>
 
