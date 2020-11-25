@@ -35,7 +35,7 @@ router.post('/signup',(req,res)=>{
     
 })
 
-
+//creates a signin authentication
 router.post('/signin',(req,res)=>{
   const {email,password}=req.body
   if(!email || !password){
