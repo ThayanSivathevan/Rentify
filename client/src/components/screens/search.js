@@ -20,7 +20,6 @@ const Search = () => {
     const [maxDate, setMaxDate] = useState()
     const [name, setName] = useState();
     const [page, setPage] = useState(0);
-    const [totalPrice, setTotalPrice] = useState(0);
     //on load get fetches from backend to get cars for specific conditions 
     useEffect(() => {
         fetch(`/cars/${p.make}/${p.price}/${p.city}/${p.date}`, {
@@ -96,7 +95,6 @@ const Search = () => {
             //moves user to second page
             setPage(2)
             setEndDate(startDate)
-            setPrice(startDate)
             let next;
             //finds the next excluded day to set the end date range, if an next excluded day exists
             dates.map(item => {
@@ -133,7 +131,7 @@ const Search = () => {
                 },
                 body: JSON.stringify({
                     //data given by user
-                    totalPrice,
+                    difference: findDifference(),
                     startDate: createDate(startDate),
                     endDate: createDate(endDate),
                     car
@@ -173,10 +171,10 @@ const Search = () => {
         return today;
     }
 
-    const findDifference = (end,start) => {
+    const findDifference = () => {
         //finds difference in days
-        const diffTime = Math.abs(end - start);
-        const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+        const diffTime = Math.abs(endDate - startDate);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         return diffDays + 1;
     }
     const cancel = () => {
@@ -188,15 +186,6 @@ const Search = () => {
         setStartDate(new Date())
         setPage(0)
         setName("")
-        setTotalPrice(null)
-    }
-    const setPrice=(endD)=>{
-        let dailyprice;
-        data.map((item)=>{
-            if(item.carsID===car)dailyprice= item.dailyPrice
-        })
-        console.log(findDifference(endD,startDate)*dailyprice,dailyprice,findDifference(endD,startDate))
-        setTotalPrice(findDifference(endD,startDate)*dailyprice)
     }
     const createForm = () => {
         //creates form for user to create order
@@ -242,9 +231,7 @@ const Search = () => {
                                 <label className="orderTitle">Order Information</label><br></br><br></br>
                                 <label id="make">
                                     <label className="orderLabel">Car:</label>
-                                    <label className="orderCar" id="car">{name}</label><br />
-                                    <label className="orderLabel" id="car">Total Price:</label>
-                                    <label className="orderCar" id="car">${totalPrice}</label>
+                                    <label className="orderCar" id="car">{name}</label>
                                 </label>
                                 <br />
                                 <label className="orderLabel endDate">End Date:</label>
@@ -253,7 +240,7 @@ const Search = () => {
 
                                     className="datepicker"
                                     selected={endDate}
-                                    onChange={date => { setPrice(date); setEndDate(date) }}
+                                    onChange={date => { setEndDate(date) }}
                                     minDate={startDate}
                                     maxDate={maxDate}
                                 />
@@ -299,7 +286,7 @@ const Search = () => {
             </div>
 
             {
-
+                
                 createForm()
             }
         </div>
