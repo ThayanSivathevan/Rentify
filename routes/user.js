@@ -50,7 +50,7 @@ router.post("/order", requireLogin, (req, res) => {
 
             }
             else{
-                 res.json({ result: "Order created sucessfully" })
+                 res.json({ result: "Order created successfully" })
             }
             
         })
@@ -81,7 +81,7 @@ router.delete("/order/:id",requireLogin,(req,res)=>{
             return res.status(422).json({ error: err })
             console.log(err)
         }
-        res.json(rows)
+        res.json({result:"Order deleted successfully"})
     })
 })
 module.exports = router

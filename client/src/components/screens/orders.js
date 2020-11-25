@@ -77,7 +77,7 @@ const Orders = () => {
             }
             //lets the user know the order was deleted and re checks the database for the orders
             else{
-                M.toast({html:"Order sucessfully deleted", classes: "#26a69a teal lighten-1" })
+                M.toast({html:res.result, classes: "#26a69a teal lighten-1" })
                 getOrders()
             }
            

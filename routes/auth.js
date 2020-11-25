@@ -28,7 +28,7 @@ router.post('/signup',(req,res)=>{
     VALUES ('${email}','${fName}','${lName}','${password}');`
     con.query(sql, function (err, rows) {
         if (err){
-             return res.status(422).json({error:"Email Already Used"})
+             return res.status(422).json({error:"Email already used"})
         }
         return res.json({result:"Signed up sucessfully"})
      });
@@ -48,7 +48,7 @@ router.post('/signin',(req,res)=>{
       
       }
       if(Object.keys(rows).length==0){
-        return res.status(422).json({error:"Signin failed"})
+        return res.status(422).json({error:"Incorrect email/password"})
       }
       const token = jwt.sign({id:rows[0].UsersID},JWT_SECRET)
       console.log(rows[0],token,rows[0].id)

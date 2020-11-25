@@ -37,7 +37,7 @@ const NavBar = ()=>{
 
     //returns components 
     return (
-            <nav>
+            <nav className="bob">
                 <div className="nav-wrapper">
                     <ul>
                         <li><Link to="/" id="title" className="left hide-on-med-and-down">RENTIFY</Link></li>
