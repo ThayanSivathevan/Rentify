@@ -35,27 +35,19 @@ router.get("/dates/:car", requireLogin, (req, res) => {
 
 router.post("/order", requireLogin, (req, res) => {
     console.log(req.body.startDate)
-    con.query(`SELECT dailyPrice,branchID FROM car WHERE carsID=${req.body.car}`, (err, rows) => {
+     
+    let sql = `INSERT INTO rentify.orders (userID,branchID,carID,startDate,endDate,totalPrice) VALUES (${req.user.UsersID},${branchID},${req.body.car},DATE('${req.body.startDate}'),DATE('${req.body.endDate}'),${req.body.totalPrice}) `
+    con.query(sql, (err, rows) => {
         if (err) {
             return res.status(422).json({ error: err })
 
         }
+        else {
+            res.json({ result: "Order created successfully" })
+        }
 
-        const { dailyPrice, branchID } = rows[0]
-        let totalPrice = dailyPrice * req.body.difference
-        let sql = `INSERT INTO rentify.orders (userID,branchID,carID,startDate,endDate,totalPrice) VALUES (${req.user.UsersID},${branchID},${req.body.car},DATE('${req.body.startDate}'),DATE('${req.body.endDate}'),${totalPrice}) `
-        con.query(sql, (err, rows) => {
-            if (err) {
-                return res.status(422).json({ error: err })
-
-            }
-            else{
-                 res.json({ result: "Order created successfully" })
-            }
-            
-        })
-        console.log(sql)
     })
+
 
 })
 
@@ -73,15 +65,15 @@ router.get("/orders", requireLogin, (req, res) => {
 })
 
 
-router.delete("/order/:id",requireLogin,(req,res)=>{
-    let sql=`DELETE FROM orders WHERE ${req.params.id}=orderID;`
+router.delete("/order/:id", requireLogin, (req, res) => {
+    let sql = `DELETE FROM orders WHERE ${req.params.id}=orderID;`
     console.log(sql)
     con.query(sql, (err, rows) => {
         if (err) {
             return res.status(422).json({ error: err })
             console.log(err)
         }
-        res.json({result:"Order deleted successfully"})
+        res.json({ result: "Order deleted successfully" })
     })
 })
 module.exports = router
