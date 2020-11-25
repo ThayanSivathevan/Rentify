@@ -267,11 +267,11 @@ const Search = () => {
                                     <img src={item.carUrl} width="300" height="150" />
                                     <span className="card-title">{item.carMake + " " + item.carModel}</span>
                                     <a className="btn-floating halfway-fab waves-effect waves-light teal lighten-1">
-                                        <i onClick={e => getDates(item.carsID, item.carMake, item.carModel)} className="material-icons">+</i>
+                                        <i onClick={e => getDates(item.carsID, item.carMake, item.carModel)} className="material-icons add">+</i>
                                     </a>
                                 </div>
                                 <div className="card-content">
-                                    <p className="carDescription"><b>{item.carType}</b>  - <b>{item.carBuild}</b> </p>
+                                    <p className="carDescription"><b>{item.carType}</b> - <b>{item.carBuild}</b> </p>
                                     <p className="carDescription"><b><u>${item.dailyPrice}/day</u></b></p>
                                     <p className="carDescription">Located at <b>{item.BranchName}</b> at <b>{item.Location}</b> in <b>{item.city}</b></p>
 

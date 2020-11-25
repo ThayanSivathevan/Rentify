@@ -7,6 +7,7 @@ import Navbar from './components/navbar'
 import Home from './components/screens/home'
 import Orders from './components/screens/orders'
 import Search from './components/screens/search'
+import About from './components/screens/aboutus'
 import { BrowserRouter, Route, Switch, useHistory } from 'react-router-dom';
 import { reducer, initialState } from './reducers/UserReducer'
 export const UserContext = createContext()
@@ -39,6 +40,9 @@ const Routing=()=>{
       </Route>
       <Route exact path="/">
              <Home/> 
+      </Route>
+      <Route exact path="/aboutus">
+             <About/> 
       </Route>
       <Route exact path="/search/:make/:price/:city/:date">
              <Search/> 

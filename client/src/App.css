@@ -27,10 +27,14 @@ li a:active {
   	font-family: 'Fira Sans Condensed', sans-serif;
 }
 
+.main {
+	margin-top: 4rem;
+}
+
 nav {
 	top: -5px !important;
-	overflow: visible;
 	z-index: 2;
+	position: fixed;
 }
 
 nav .nav-wrapper { 
@@ -268,6 +272,13 @@ nav ul a:hover {
 	text-align: center;
 }
 
+.add {
+	font-weight: bold;
+	position: center;
+	margin-top: -3px;
+	margin-left: 0px;
+}
+
 .welcome {
     margin: 2rem 0 0 1rem;
     font-size: 45px;
@@ -303,7 +314,6 @@ nav ul a:hover {
 
 #img01 {
     text-align: center;
-
     padding: 0px;
     border-radius: 4px;
 }
@@ -315,4 +325,19 @@ nav ul a:hover {
 .ord .btn {
     position: all;
     margin: -4rem 3rem 0 0;
+}
+
+.page-footer {
+	position: fixed;
+	background-color: #424242;
+	height: 100%;
+	width: 100%;
+}
+
+.footer-copyright {
+	background-color: #26a69a !important;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 5%;
 }
