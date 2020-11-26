@@ -20,6 +20,7 @@ const Search = () => {
     const [maxDate, setMaxDate] = useState()
     const [name, setName] = useState();
     const [page, setPage] = useState(0);
+    const [dailyPrice,setDailyPrice] =useState()
     //on load get fetches from backend to get cars for specific conditions 
     useEffect(() => {
         fetch(`/cars/${p.make}/${p.price}/${p.city}/${p.date}`, {
@@ -40,8 +41,9 @@ const Search = () => {
     }, [])
 
     //when creating an order gets all the dates for the car to check if there are conflicting days
-    const getDates = (id, name1, name2) => {
+    const getDates = (id, name1, name2,price) => {
         setCar(id);
+        setDailyPrice(price)
         setName(name1 + " " + name2)
         //sends a get request to retrieve dates for the specific car
         fetch(`/dates/${id}`, {
@@ -134,7 +136,8 @@ const Search = () => {
                     difference: findDifference(),
                     startDate: createDate(startDate),
                     endDate: createDate(endDate),
-                    car
+                    car,
+                    dailyPrice
                 })
 
             }).then(res => res.json()).then(res => {
@@ -186,6 +189,7 @@ const Search = () => {
         setStartDate(new Date())
         setPage(0)
         setName("")
+        setDailyPrice(null)
     }
     const createForm = () => {
         //creates form for user to create order
@@ -267,7 +271,7 @@ const Search = () => {
                                     <img src={item.carUrl} width="300" height="150" />
                                     <span className="card-title">{item.carMake + " " + item.carModel}</span>
                                     <a className="btn-floating halfway-fab waves-effect waves-light teal lighten-1">
-                                        <i onClick={e => getDates(item.carsID, item.carMake, item.carModel)} className="material-icons add">+</i>
+                                        <i onClick={e => getDates(item.carsID, item.carMake, item.carModel,item.dailyPrice)} className="material-icons add">+</i>
                                     </a>
                                 </div>
                                 <div className="card-content">
